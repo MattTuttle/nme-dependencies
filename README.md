@@ -21,10 +21,8 @@ freetype
 glfw
 curl
 curl-ssl
-
 theoraplay
 smpeg
-
 sdl
 sdl_ttf
 sdl_mixer
