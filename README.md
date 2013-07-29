@@ -19,11 +19,11 @@ vorbis
 theora
 freetype
 glfw
+curl
+curl-ssl
 
 theoraplay
 smpeg
-curl
-curl-ssl
 
 sdl
 sdl_ttf
