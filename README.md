@@ -8,3 +8,23 @@ mkdir Build
 cd Build
 cmake -G Xcode ..
 ```
+
+Libraries
+---------
+zlib
+png
+jpeg
+ogg
+vorbis
+theora
+freetype
+glfw
+
+theoraplay
+smpeg
+curl
+curl-ssl
+
+sdl
+sdl_ttf
+sdl_mixer

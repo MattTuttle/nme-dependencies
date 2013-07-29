@@ -19,8 +19,6 @@ EXTERNALPROJECT_ADD(glfw
     URL https://github.com/glfw/glfw/archive/3.0.1.tar.gz
     URL_MD5 6ae8ee791232d3b9ad302594560b074b
 
-    PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${NMEDependencies_SOURCE_DIR}/CMake/glfw.cmake <SOURCE_DIR>/CMakeLists.txt
-
     INSTALL_DIR ${NME_DEPS_CORE_PREFIX}
-    CMAKE_ARGS ${glfw_CMAKE_ARGS}
+    CMAKE_ARGS ${glfw_CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${install_dir}
 )

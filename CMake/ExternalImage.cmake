@@ -47,3 +47,28 @@ EXTERNALPROJECT_ADD(libpng
     INSTALL_DIR ${NME_DEPS_CORE_PREFIX}
     CMAKE_ARGS ${libpng_CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${install_dir} # to find zlib
 )
+
+SET(libjpeg_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/libjpeg)
+
+# Kludge: Shouldn't be necessary if FIND_LIBRARY were working on mingw.
+IF (MINGW)
+    SET(libjpeg_CMAKE_ARGS ${libjpeg_CMAKE_ARGS}
+        -DZLIB_LIBRARY=zlib
+        -DZLIB_INCLUDE_DIR=${install_dir}/include
+    )
+ENDIF(MINGW)
+
+EXTERNALPROJECT_ADD(libjpeg
+    DEPENDS zlib
+    PREFIX ${libjpeg_PREFIX}
+
+    DOWNLOAD_DIR ${NME_DEPS_DOWNLOAD_DIR}
+    URL http://www.ijg.org/files/jpegsrc.v9.tar.gz
+    URL_MD5 b397211ddfd506b92cd5e02a22ac924d
+
+    PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${NMEDependencies_SOURCE_DIR}/CMake/libjpeg.cmake <SOURCE_DIR>/CMakeLists.txt
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=<INSTALL_DIR>
+
+    INSTALL_DIR ${NME_DEPS_CORE_PREFIX}
+    CMAKE_ARGS ${libjpeg_CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${install_dir} # to find zlib
+)
